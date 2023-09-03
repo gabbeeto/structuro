@@ -1,0 +1,1 @@
+alert('displayNode.js works');

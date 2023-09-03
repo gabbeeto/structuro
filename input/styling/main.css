@@ -1,0 +1,10 @@
+:root{
+--white:white;
+--black:black;
+}
+
+
+body{
+background-color: var(--black);
+color: var(--white);
+}
