@@ -1,3 +1,10 @@
+*{
+padding: 0;
+margin: 0;
+box-sizing:border-box;
+}
+
+
 :root{
 --white:white;
 --black:black;
@@ -7,4 +14,20 @@
 body{
 background-color: var(--black);
 color: var(--white);
+}
+
+header{
+border-bottom:2px solid var(--white);
+}
+
+main{
+position:relative;
+}
+
+#buttons{
+  top:2vw;
+  width:100%;
+  display: flex;
+  position:absolute;
+  justify-content: space-between;
 }
