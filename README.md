@@ -17,11 +17,14 @@ createNodes.js and removeNodes.js and editNodes.js from nodes folder:
 it contains the functions related to the buttons that create/remove/edit nodes.
 
 import.js and export.js from structure folder:
-it contains the functions related to importing/exporting the structure  
+it contains the functions related to importing/exporting the structure.
 
 
 displayNodes.js:
 it displays the nodes in the html files
+
+everything inside windows:
+all the files that generate from a window by clicking on of the buttons
 
 buttons.js:
 add events to all the buttons from html and apply the functionality from the createNodes.js/removeNodes.js/editNodes.js/import.js/export.js/displayNodes.js
