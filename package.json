@@ -1,0 +1,13 @@
+{
+  "name": "structuro",
+  "version": "1.0.0",
+  "private":true,
+  "description": "I've done this so I can structure my codebase so much better.",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --watch"
+  },
+  "keywords": [],
+  "author": "gabbeeto",
+  "license": "ISC"
+}
