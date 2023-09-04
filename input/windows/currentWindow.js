@@ -1,4 +1,4 @@
-window.window = {isWindowOpen: false,}
+window.windowProperties = {isWindowNotOpen: true,}
 
-export default  currentWindow = document.querySelector('#currentWindow');
+export let  currentWindow = document.querySelector('#currentWindow');
 
