@@ -5,8 +5,8 @@ window.windowProperties = {isWindowNotOpen: true,}
 export let  currentWindow = document.querySelector('#currentWindow');
 
 export function closeWindow(){
-alert('the feature of the future');
-
+currentWindow.style.display = 'none';
+currentWindow.innerHTML = '';
 }
 
 export function  displayWindow(){
@@ -14,5 +14,4 @@ currentWindow.style.display = 'flex';
 }
 
 export function hideWindow(){
-currentWindow.style.display = 'none';
 }
