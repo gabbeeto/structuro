@@ -1,4 +1,4 @@
-import { currentWindow, closeWindow } from './../currentWindow.js'
+import { currentWindow, closeWindow, displayWindow} from './../currentWindow.js'
 import { applyEditChanges} from './../../nodes/editNodes.js'
 
 export function generateWindowForEditNodesButton() {
@@ -11,10 +11,12 @@ export function generateWindowForEditNodesButton() {
     <input type="text">
     <p>color:</p>
     <input type="color" id="">
-    <button id='applyEditChanges'>apply</button>`
+    <button id='applyEditChanges'>apply</button>`;
 
-    document.querySelector('#closeWindow').addEventListener('click', closeWindow)
-    document.querySelector('#applyEditChanges').addEventListener('click', applyEditChanges)
+    document.querySelector('#closeWindow').addEventListener('click', closeWindow);
+    document.querySelector('#applyEditChanges').addEventListener('click', applyEditChanges);
+
+    displayWindow();
   }
 }
 
