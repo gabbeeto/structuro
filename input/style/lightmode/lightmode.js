@@ -1,0 +1,1 @@
+alert('lightmode.css working')
