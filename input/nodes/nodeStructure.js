@@ -1,6 +1,15 @@
-window.nodeElement = function(text = 'empty',color = 'black'){
-return {text, color}
+
+
+window.nodeElement = function(text = 'empty', color = 'black', children = [],) {
+    return { text, color, children }
 }
 
-window.nodeStructure = [nodeElement('node1')]
+if (localStorage.nodeStructure) {
+  window.nodeStructure = localStorage.nodeStructure
+}
+else {
+  window.nodeStructure = nodeElement('firstElement', 'black', [nodeElement('secondElement'),nodeElement('thirdElement')]);
+}
+
+
 
