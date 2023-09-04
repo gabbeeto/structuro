@@ -1,4 +1,4 @@
-import './styling/main.css'
+import './style/main.css'
 
 
 alert('button.js works');
