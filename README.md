@@ -13,9 +13,6 @@ lightmode folder = support light mode with javascript and make the styling with 
 ![Alt text](/images/styleFolder.png "visual representation of Style folder")
 
 
-index.html:
-it contains to contain the main structure of the website as any other index.html file
-![Alt text](/images/htmlStructure.png "visual representation of html file")
 
 
 
@@ -23,6 +20,7 @@ windows folder:
 all the files that generate from a window by clicking on of the buttons.
 structureWindows = all the content generated from one of the buttons that are related to structures.
 nodeWindows = all the content generated from one of the buttons that are related to nodes. 
+currentWindow.js = manages if window is open or not and creates a variable for Current window
 ![Alt text](/images/windowFolder.png "visual representation of window folder")
 
 nodes folder:
@@ -54,3 +52,7 @@ add events to all the buttons from html and import the functionality from the wi
 shortcuts.js:
 add keyboard support so you don't have to rely on the buttons to interact with the website.
 
+
+index.html:
+it contains to contain the main structure of the website as any other index.html file
+![Alt text](/images/htmlStructure.png "visual representation of html file")
