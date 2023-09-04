@@ -20,7 +20,7 @@ windows folder:
 all the files that generate from a window by clicking on of the buttons.
 structureWindows = all the content generated from one of the buttons that are related to structures.
 nodeWindows = all the content generated from one of the buttons that are related to nodes. 
-currentWindow.js = manages if window is open or not and creates a variable for Current window
+currentWindow.js = properties that are going to be used in the nodewindows/structureWindows folder files;
 ![Alt text](/images/windowFolder.png "visual representation of window folder")
 
 nodes folder:
