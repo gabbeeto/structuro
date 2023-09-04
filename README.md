@@ -1,10 +1,12 @@
 # structuro
 I've done this so I can structure my codebase so much better.
 
-input files: are the files I work with to make the page works, and webpack converts it into one file that's going to be on the 'output' folder
+input files: are the files I work with to make the page works, and webpack converts it into one file that's going to be inside the 'output' folder.
+![Alt text](/inputStructure.png "visual representation of Input folder")
 
 index.html:
-it contains to contain the boilerplate for the page
+it contains to contain the main structure of the website as any other index.html file
+![Alt text](/htmlStructure.png "visual representation of html file")
 
 structure.js:
 it contains all the node variables that is made by the user.
