@@ -1,6 +1,5 @@
-import { currentWindow } from './../currentWindow.js'
+import { currentWindow, closeWindow } from './../currentWindow.js'
 import { removeNode } from './../../nodes/removeNodes.js'
-import { closeWindow } from './../currentWindow.js'
 export function generateWindowForRemoveNodesButton() {
 
   if (windowProperties.isWindowNotOpen) {
