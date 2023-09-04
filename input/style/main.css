@@ -10,6 +10,13 @@ box-sizing:border-box;
 --black:black;
 }
 
+/* repetitive section */
+header, #buttons{
+display:flex;
+
+
+}
+
 
 body{
 background-color: var(--black);
@@ -18,6 +25,8 @@ color: var(--white);
 
 header{
 border-bottom:2px solid var(--white);
+justify-content:center;
+align-items:center;
 }
 
 main{
@@ -27,7 +36,6 @@ position:relative;
 #buttons{
   top:2vw;
   width:100%;
-  display: flex;
   position:absolute;
   justify-content: space-between;
 }
