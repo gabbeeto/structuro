@@ -1,10 +1,13 @@
+import './style/node/node.css'
+
+let nodeContainer = document.querySelector('#nodes')
 export function displayElements() {
   checkTheLargestIndexStructure();
+  changeTemplatesForNodeContainer()
   displayInNodes()
-
 }
-displayElements()
 
+displayElements()
 function checkTheLargestIndexStructure() {
   window.highestAmountOfElements = 0;
   window.currentIndexForTheStructure = 0;
@@ -17,11 +20,16 @@ function checkTheLargestIndexStructure() {
   })
 }
 
+function changeTemplatesForNodeContainer() {
+  nodeContainer.style.gridTemplateRows = `repeat(${nodeStructure.length}, 1fr)`
+}
+
 
 function displayInNodes() {
   let nodeContainer = document.querySelector('#nodes');
   for (let indexForNodeStructure in nodeStructure) {
     let div = document.createElement('div');
+    div.style.gridTemplateColumns = `repeat(${highestAmountOfElements}, 1fr)`
     nodeContainer.appendChild(div)
     for (let node of nodeStructure[indexForNodeStructure]) {
       let nodeText = document.createElement('p')
@@ -29,7 +37,5 @@ function displayInNodes() {
       nodeText.style.backgroundColor = node.color;
       div.appendChild(nodeText);
     }
-
   }
-
 }

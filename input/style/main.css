@@ -34,7 +34,7 @@ position:relative;
 }
 
 #buttons{
-  top:2vw;
+  top:2vh;
   width:100%;
   position:absolute;
   justify-content: space-between;

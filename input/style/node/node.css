@@ -1,0 +1,9 @@
+#nodes{
+padding-top:12vh;
+display: grid;
+}
+
+#nodes > div{
+display: grid;
+
+} 
