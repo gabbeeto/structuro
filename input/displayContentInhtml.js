@@ -3,8 +3,13 @@ import './style/node/node.css'
 let nodeContainer = document.querySelector('#nodes')
 export function displayElements() {
   checkTheLargestIndexStructure();
-  changeTemplatesForNodeContainer()
+  changeTemplatesForNodeContainer();
   displayInNodes()
+}
+
+
+// work on this
+functionForTheFuture(){
 }
 
 displayElements()
@@ -30,6 +35,7 @@ function displayInNodes() {
   for (let indexForNodeStructure in nodeStructure) {
     let div = document.createElement('div');
     div.style.gridTemplateColumns = `repeat(${highestAmountOfElements}, 1fr)`
+    div.style.gridTemplate
     nodeContainer.appendChild(div)
     for (let node of nodeStructure[indexForNodeStructure]) {
       let nodeText = document.createElement('p')
