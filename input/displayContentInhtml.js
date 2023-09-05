@@ -9,8 +9,23 @@ export function displayElements() {
 
 
 // work on this
-functionForTheFuture(){
+function functionForTheFuture() {
+  amountOfSpaceInStructure = []
+  for (let index in nodeStructure) {
+    valueForIndex = 0
+    for (let index2 in nodeStructure[index]) {
+      valueForIndex = valueForIndex + nodeStructure[index2].amountOfSpace
+    }
+    amountOfSpaceInStructure[index].push(valueForIndex)
+
+  }
 }
+
+
+// log I'll apply later
+// get the parent size, (if none then 100% is the size) and get the length of all the siblings.
+// divide the all the siblings by the father length to get your current length.
+// repeat until it displays all elements
 
 displayElements()
 function checkTheLargestIndexStructure() {
