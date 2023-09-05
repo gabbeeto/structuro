@@ -1,5 +1,6 @@
 import './style/main.css'
 import './nodes/nodeStructure.js'
+import './displayContentInhtml.js'
 
 // functionality for node buttons from the left part of the screen
 import { generateWindowForCreateNodesButton } from './windows/nodeWindows/createNodes.js';
