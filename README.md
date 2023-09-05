@@ -18,8 +18,8 @@ lightmode folder = support light mode with javascript and make the styling with 
 
 windows folder:
 all the files that generate from a window by clicking on of the buttons.
-structureWindows = all the content generated from one of the buttons that are related to structures.
-nodeWindows = all the content generated from one of the buttons that are related to nodes. 
+structureWindows = all the content generated from one of the windows  that are related to structure buttons on the right. 
+nodeWindows = all the content generated from one of the windows  that are related to nodes buttons on the left. 
 currentWindow.js = properties that are going to be used in the nodewindows/structureWindows folder files;
 ![Alt text](/images/windowFolder.png "visual representation of window folder")
 
@@ -28,6 +28,7 @@ all the files related to nodes.
 nodeStructure.js = main structure of nodes functionality.
 createNodes.js = functionality for the createNode window buttons.
 removeNodes.js = functionality for the removeNode window buttons.
+firstNode.js = functionality for the 'change first node' window buttons.
 editNodes.js = functionality for the editNode window buttons.
 ![Alt text](/images/nodesFolder.png "visual representation of nodes folder")
 
