@@ -5,6 +5,7 @@ import './nodes/nodeStructure.js'
 import { generateWindowForCreateNodesButton } from './windows/nodeWindows/createNodes.js';
 import { generateWindowForRemoveNodesButton } from './windows/nodeWindows/removeNodes.js';
 import { generateWindowForEditNodesButton } from './windows/nodeWindows/editNodes.js';
+import { generateWindowForFirstNodeButton } from './windows/nodeWindows/firstNode.js';
 
 // functionality for structure buttons from the right part of the screen
 import { generateWindowForImportStructureButton } from './windows/structureWindows/importStructure.js';
@@ -21,8 +22,11 @@ createNodeBtn.addEventListener('click', generateWindowForCreateNodesButton)
 const removeNodeBtn = document.querySelector(`${nodeBtnId} button:nth-of-type(2)`)
 removeNodeBtn.addEventListener('click', generateWindowForRemoveNodesButton)
 
-const editNodeBtn = document.querySelector(`${nodeBtnId} button:last-of-type`)
+const editNodeBtn = document.querySelector(`${nodeBtnId} button:nth-of-type(3)`)
 editNodeBtn.addEventListener('click', generateWindowForEditNodesButton)
+
+const firstNodeBtn = document.querySelector(`${nodeBtnId} button:last-of-type`)
+firstNodeBtn.addEventListener('click', generateWindowForFirstNodeButton)
 
 
 
