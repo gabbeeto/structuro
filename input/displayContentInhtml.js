@@ -1,7 +1,6 @@
 import './style/node/node.css'
 
 let nodeContainer = document.querySelector('#nodes')
-
 window.nodeSizeForColumnTemplate = [];
 
 displayElements()
@@ -80,15 +79,15 @@ function getTextForGridTemplate(structureIndex) {
 
 function displayInNodes() {
   let nodeContainer = document.querySelector('#nodes');
-  for (let indexForNodeStructure in selectedStructure) {
-    let div = document.createElement('div');
-    div.style.gridTemplateColumns = `${nodeSizeForColumnTemplate[indexForNodeStructure]}`;
-    nodeContainer.appendChild(div)
-    for (let node of selectedStructure[indexForNodeStructure]) {
+  for (let divIndex in selectedStructure) {
+    let divForNodes = document.createElement('div');
+    divForNodes.style.gridTemplateColumns = `${nodeSizeForColumnTemplate[divIndex]}`;
+    nodeContainer.appendChild(divForNodes)
+    for (let node of selectedStructure[divIndex]) {
       let nodeText = document.createElement('p')
       nodeText.innerText = node.text;
       nodeText.style.backgroundColor = node.color;
-      div.appendChild(nodeText);
+      divForNodes.appendChild(nodeText);
     }
   }
 }
