@@ -12,7 +12,8 @@ window.nodeElement = function(text = 'empty', color = 'black', children = emptyE
 }
 
 if (localStorage.nodeStructure) {
-  window.nodeStructure = localStorage.nodeStructure
+  window.nodeStructure = JSON.parse(localStorage.nodeStructure.main)
+  window.selectedStructure = JSON.parse(localStorage.nodeStructure.selected)
 }
 else {
   let firstNode = nodeElement('firstElement', 'black', [nodeElement('secondElement', 'pink'),nodeElement('thirdElement', 'gray')]);
@@ -24,6 +25,8 @@ else {
   firstNode.children[1].indexForParent = 0;
   
   window.nodeStructure = [[firstNode],[firstNode.children[0], firstNode.children[1]]];
+
+  window.selectedStructure = nodeStructure;
 }
 
 
