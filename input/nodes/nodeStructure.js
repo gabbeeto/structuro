@@ -8,7 +8,7 @@ return {text}
 
 
 window.nodeElement = function(text = 'empty', color = 'black', children = emptyElement(), indexForSibling = 0, indexForParent = false, indexForStructure = 0, amountOfSpace = 1) {
-    return { text, color, children , index: indexForSibling,indexForParent, indexForStructure, amountOfSpace}
+    return { text, color, children , indexForSibling,indexForParent, indexForStructure, amountOfSpace}
 }
 
 if (localStorage.nodeStructure) {

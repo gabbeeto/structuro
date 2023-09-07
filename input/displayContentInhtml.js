@@ -14,7 +14,7 @@ function checkTheLargestIndexStructure() {
   window.highestAmountOfElements = 0;
   window.currentIndexForTheStructure = 0;
   // check if the current structure is larger than the previous structure 
-  nodeStructure.forEach(node => {
+  selectedStructure.forEach(node => {
     if (node.length > highestAmountOfElements) {
       highestAmountOfElements = node.length;
       currentIndexForTheStructure = node[0].indexForStructure;
@@ -52,13 +52,13 @@ function changeTemplatesForNodeContainer() {
 
 function displayInNodes() {
   let nodeContainer = document.querySelector('#nodes');
-  for (let indexForNodeStructure in nodeStructure) {
+  for (let indexForNodeStructure in selectedStructure) {
     let div = document.createElement('div');
     div.style.gridTemplateColumns = `repeat(${highestAmountOfElements}, 1fr)`
     div.style.gridTemplate
     nodeContainer.appendChild(div)
-    for (let node of nodeStructure[indexForNodeStructure]) {
-      getParentSize(node)
+    for (let node of selectedStructure[indexForNodeStructure]) {
+      getCurrentSize(node)
       let nodeText = document.createElement('p')
       nodeText.innerText = node.text;
       nodeText.style.backgroundColor = node.color;
@@ -68,15 +68,17 @@ function displayInNodes() {
 }
 
 // work on this later on
-function getParentSize(node) {
+function getCurrentSize(node) {
   // it's a comparison because 0 as a number is falsy
   if (`${node.indexForParent}` != 'false') {
     // if there's a parent then...
 
-    percentageCalculation = (node.amountOfSpace / amountOfSpaceInStructure[node.indexForStructure]) 
-    calculation2 = (percentageCalculation * currentSize[node.indexForStructure - 1][node.indexForParent])
-
-
+    let percentageCalculation = (node.amountOfSpace / amountOfSpaceInStructure[node.indexForStructure]) 
+    let calculation2 = (percentageCalculation * currentSize[node.indexForStructure - 1][node.indexForParent])
+    console.log(node.indexForStructure)
+    console.log(node)
+    console.log(node.indexForSibling)
+    window.currentSize[node.indexForStructure][node.indexForSibling] = calculation2
     // window.currentSize[node.indexForStructure][node.indexForSibling] = ;
   }
   else {
