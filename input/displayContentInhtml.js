@@ -1,37 +1,26 @@
 import './style/node/node.css'
 
 let nodeContainer = document.querySelector('#nodes')
+
 window.currentSizeWithText = [];
+
 displayElements()
+
 export function displayElements() {
-  checkTheLargestIndexStructure();
   calculateSpaceInsideStructureArray()
   calculateSizeForDisplay()
-  // changeTemplatesForNodeContainer();
   displayInNodes()
 }
 
-function checkTheLargestIndexStructure() {
-  window.highestAmountOfElements = 0;
-  window.currentIndexForTheStructure = 0;
-  // check if the current structure is larger than the previous structure 
-  selectedStructure.forEach(node => {
-    if (node.length > highestAmountOfElements) {
-      highestAmountOfElements = node.length;
-      currentIndexForTheStructure = node[0].indexForStructure;
-    }
-  })
-}
 
 
 
-// works but maybe not necessary because checkTheLargestIndexStructure do its job
 function calculateSpaceInsideStructureArray() {
   window.amountOfSpaceInStructure = []
-  for (let index in nodeStructure) {
+  for (let index in selectedStructure) {
     let valueForIndex = 0
-    for (let index2 in nodeStructure[index]) {
-      valueForIndex = valueForIndex + nodeStructure[index][index2].amountOfSpace
+    for (let index2 in selectedStructure[index]) {
+      valueForIndex = valueForIndex + selectedStructure[index][index2].amountOfSpace
     }
     amountOfSpaceInStructure.push(valueForIndex)
 
@@ -85,15 +74,6 @@ function getTextForGridTemplate(structureIndex) {
 
 
 
-// log I'll apply later
-// get the parent size, (if none then 100% is the size) and get the length of all the siblings.
-// divide all the space of siblings  by the father length to get your current length.
-// repeat until it displays all elements
-
-
-function changeTemplatesForNodeContainer() {
-  nodeContainer.style.gridTemplateRows = `repeat(${nodeStructure.length}, 1fr)`
-}
 
 
 function displayInNodes() {
@@ -102,7 +82,6 @@ function displayInNodes() {
     let div = document.createElement('div');
     console.log(`${currentSizeWithText[indexForNodeStructure]}`)
     div.style.gridTemplateColumns = `${currentSizeWithText[indexForNodeStructure]}`;
-    // div.style.gridTemplate = ''
     nodeContainer.appendChild(div)
     for (let node of selectedStructure[indexForNodeStructure]) {
       let nodeText = document.createElement('p')

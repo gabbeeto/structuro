@@ -2,8 +2,8 @@
 
 // empty elements are for displaying purposes only
 
-function emptyElement(text = 'empty'){
-return {text}
+function emptyElement(text = 'empty', indexForParent = true){
+return {text, indexForParent}
 }
 
 
