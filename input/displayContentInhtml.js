@@ -74,12 +74,12 @@ function getCurrentSize(node) {
     // if there's a parent then...
 
     let percentageCalculation = (node.amountOfSpace / amountOfSpaceInStructure[node.indexForStructure]) 
-    let calculation2 = (percentageCalculation * currentSize[node.indexForStructure - 1][node.indexForParent])
-    console.log(node.indexForStructure)
-    console.log(node)
-    console.log(node.indexForSibling)
-    window.currentSize[node.indexForStructure][node.indexForSibling] = calculation2
-    // window.currentSize[node.indexForStructure][node.indexForSibling] = ;
+
+    let parentElementSize = window.currentSize[node.indexForStructure - 1][node.indexForParent]
+
+    let calculation2 = (percentageCalculation * parentElementSize)
+    currentSize[node.indexForStructure] = []
+    window.currentSize[node.indexForStructure][node.indexForSibling] = calculation2;
   }
   else {
     window.currentSize = [[100]];
