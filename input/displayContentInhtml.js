@@ -1,12 +1,13 @@
 import './style/node/node.css'
 
 let nodeContainer = document.querySelector('#nodes')
-
+window.currentSizeWithText = [];
 displayElements()
 export function displayElements() {
   checkTheLargestIndexStructure();
   calculateSpaceInsideStructureArray()
-  changeTemplatesForNodeContainer();
+  calculateSizeForDisplay()
+  // changeTemplatesForNodeContainer();
   displayInNodes()
 }
 
@@ -39,6 +40,51 @@ function calculateSpaceInsideStructureArray() {
 
 
 
+
+function calculateSizeForDisplay() {
+  for (let structureIndex in selectedStructure) {
+    for (let node of selectedStructure[structureIndex]) {
+      getCurrentSize(node)
+    }
+    getTextForGridTemplate(structureIndex)
+  }
+}
+
+function getCurrentSize(node) {
+  // it's a comparison because 0 as a number is falsy
+  if (`${node.indexForParent}` != 'false') {
+    // if there's a parent then...
+
+    let percentageCalculation = (node.amountOfSpace / amountOfSpaceInStructure[node.indexForStructure])
+
+    let parentElementSize = window.currentSize[node.indexForStructure - 1][node.indexForParent]
+
+    let calculation2 = (percentageCalculation * parentElementSize)
+
+    if (currentSize[node.indexForStructure]) {
+      window.currentSize[node.indexForStructure][node.indexForSibling] = calculation2;
+    }
+    else {
+      currentSize[node.indexForStructure] = []
+      window.currentSize[node.indexForStructure][node.indexForSibling] = calculation2;
+    }
+  }
+  else {
+    window.currentSize = [[100]];
+  }
+}
+
+function getTextForGridTemplate(structureIndex) {
+  let textArray = []
+  for (let size of currentSize[structureIndex]) {
+    textArray.push(`${size}%`)
+    textArray.push(' ')
+  }
+  window.currentSizeWithText[structureIndex] = textArray.join('')
+}
+
+
+
 // log I'll apply later
 // get the parent size, (if none then 100% is the size) and get the length of all the siblings.
 // divide all the space of siblings  by the father length to get your current length.
@@ -54,11 +100,11 @@ function displayInNodes() {
   let nodeContainer = document.querySelector('#nodes');
   for (let indexForNodeStructure in selectedStructure) {
     let div = document.createElement('div');
-    div.style.gridTemplateColumns = `repeat(${highestAmountOfElements}, 1fr)`
-    div.style.gridTemplate
+    console.log(`${currentSizeWithText[indexForNodeStructure]}`)
+    div.style.gridTemplateColumns = `${currentSizeWithText[indexForNodeStructure]}`;
+    // div.style.gridTemplate = ''
     nodeContainer.appendChild(div)
     for (let node of selectedStructure[indexForNodeStructure]) {
-      getCurrentSize(node)
       let nodeText = document.createElement('p')
       nodeText.innerText = node.text;
       nodeText.style.backgroundColor = node.color;
@@ -67,21 +113,3 @@ function displayInNodes() {
   }
 }
 
-// work on this later on
-function getCurrentSize(node) {
-  // it's a comparison because 0 as a number is falsy
-  if (`${node.indexForParent}` != 'false') {
-    // if there's a parent then...
-
-    let percentageCalculation = (node.amountOfSpace / amountOfSpaceInStructure[node.indexForStructure]) 
-
-    let parentElementSize = window.currentSize[node.indexForStructure - 1][node.indexForParent]
-
-    let calculation2 = (percentageCalculation * parentElementSize)
-    currentSize[node.indexForStructure] = []
-    window.currentSize[node.indexForStructure][node.indexForSibling] = calculation2;
-  }
-  else {
-    window.currentSize = [[100]];
-  }
-}
