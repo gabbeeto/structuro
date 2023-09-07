@@ -2,7 +2,7 @@ import './style/node/node.css'
 
 let nodeContainer = document.querySelector('#nodes')
 
-window.currentSizeWithText = [];
+window.nodeSizeForColumnTemplate = [];
 
 displayElements()
 
@@ -16,15 +16,14 @@ export function displayElements() {
 
 
 function calculateSpaceInsideStructureArray() {
-  window.amountOfSpaceInStructure = []
-  for (let index in selectedStructure) {
-    let valueForIndex = 0
-    for (let index2 in selectedStructure[index]) {
-      valueForIndex = valueForIndex + selectedStructure[index][index2].amountOfSpace
-    }
-    amountOfSpaceInStructure.push(valueForIndex)
+  window.amountOfSpaceInNodeDivs = []
 
-  }
+  selectedStructure.forEach((divForNode) => {
+
+    let AmountOfExistingSpaceFromThisDiv = divForNode.reduce((accumulator, currentNode) => accumulator + currentNode.amountOfSpace, 0);
+    amountOfSpaceInNodeDivs.push(AmountOfExistingSpaceFromThisDiv)
+
+  })
 }
 
 
@@ -33,43 +32,46 @@ function calculateSpaceInsideStructureArray() {
 function calculateSizeForDisplay() {
   for (let structureIndex in selectedStructure) {
     for (let node of selectedStructure[structureIndex]) {
-      getCurrentSize(node)
+      getWidthSizeForNode(node)
     }
     getTextForGridTemplate(structureIndex)
   }
 }
 
-function getCurrentSize(node) {
+function getWidthSizeForNode(node) {
   // it's a comparison because 0 as a number is falsy
   if (`${node.indexForParent}` != 'false') {
     // if there's a parent then...
 
-    let percentageCalculation = (node.amountOfSpace / amountOfSpaceInStructure[node.indexForStructure])
+    let nodeSpace = node.amountOfSpace;
+    let divSpace = amountOfSpaceInNodeDivs[node.indexForStructure];
+    let percentageCalculation = (nodeSpace / divSpace)
 
-    let parentElementSize = window.currentSize[node.indexForStructure - 1][node.indexForParent]
-
+    let parentElementSize = window.nodeSize[node.indexForStructure - 1][node.indexForParent]
     let calculation2 = (percentageCalculation * parentElementSize)
 
-    if (currentSize[node.indexForStructure]) {
-      window.currentSize[node.indexForStructure][node.indexForSibling] = calculation2;
+    // if statement made to combat the undefined problem
+    if (nodeSize[node.indexForStructure]) {
+      window.nodeSize[node.indexForStructure][node.indexForSibling] = calculation2;
     }
     else {
-      currentSize[node.indexForStructure] = []
-      window.currentSize[node.indexForStructure][node.indexForSibling] = calculation2;
+      nodeSize[node.indexForStructure] = []
+      window.nodeSize[node.indexForStructure][node.indexForSibling] = calculation2;
     }
   }
   else {
-    window.currentSize = [[100]];
+    // if there's no parent, it is 100% width
+    window.nodeSize = [[100]];
   }
 }
 
 function getTextForGridTemplate(structureIndex) {
-  let textArray = []
-  for (let size of currentSize[structureIndex]) {
-    textArray.push(`${size}%`)
-    textArray.push(' ')
+  let sizeInformationArray = []
+  for (let size of nodeSize[structureIndex]) {
+    sizeInformationArray.push(`${size}%`)
+    sizeInformationArray.push(' ')
   }
-  window.currentSizeWithText[structureIndex] = textArray.join('')
+  window.nodeSizeForColumnTemplate[structureIndex] = sizeInformationArray.join('')
 }
 
 
@@ -80,8 +82,7 @@ function displayInNodes() {
   let nodeContainer = document.querySelector('#nodes');
   for (let indexForNodeStructure in selectedStructure) {
     let div = document.createElement('div');
-    console.log(`${currentSizeWithText[indexForNodeStructure]}`)
-    div.style.gridTemplateColumns = `${currentSizeWithText[indexForNodeStructure]}`;
+    div.style.gridTemplateColumns = `${nodeSizeForColumnTemplate[indexForNodeStructure]}`;
     nodeContainer.appendChild(div)
     for (let node of selectedStructure[indexForNodeStructure]) {
       let nodeText = document.createElement('p')
