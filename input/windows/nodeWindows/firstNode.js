@@ -17,6 +17,7 @@ export function generateWindowForFirstNodeButton(){
     document.querySelector('#closeWindow').addEventListener('click', closeWindow);
     document.querySelector('#applyFirstNodeFunc').addEventListener('click', applyFirstNodeFunc);
 
+    windowProperties.isWindowNotOpen = false;
     displayWindow();
   }
 

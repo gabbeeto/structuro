@@ -17,6 +17,7 @@ export function generateWindowForCreateNodesButton() {
     document.querySelector('#addNodeChild').addEventListener('click', addNodeChild);
     document.querySelector('#addNodeToTheRight').addEventListener('click', addNodeToRight);
 
+    windowProperties.isWindowNotOpen = false;
     displayWindow();
   }
 

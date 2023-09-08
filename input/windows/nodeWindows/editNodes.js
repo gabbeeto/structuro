@@ -16,6 +16,7 @@ export function generateWindowForEditNodesButton() {
     document.querySelector('#closeWindow').addEventListener('click', closeWindow);
     document.querySelector('#applyEditChanges').addEventListener('click', applyEditChanges);
 
+    windowProperties.isWindowNotOpen = false;
     displayWindow();
   }
 }

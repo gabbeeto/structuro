@@ -9,6 +9,7 @@ export function generateWindowForRemoveNodesButton() {
     document.querySelector('#acceptDelete').addEventListener('click', removeNode);
     document.querySelector('#denyDelete').addEventListener('click', closeWindow );
 
+    windowProperties.isWindowNotOpen = false;
     displayWindow()
   }
 }
