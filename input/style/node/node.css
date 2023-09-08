@@ -8,3 +8,14 @@ display: grid;
 align-items:center;
 justify-items:center;
 } 
+
+#nodes p{
+width:15vw;
+height:3vw;
+font-size:1.2vw;
+text-align:center;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius: 10px;
+}

@@ -8,6 +8,7 @@ box-sizing:border-box;
 :root{
 --white:white;
 --black:black;
+--yellow:#EA9B0E;
 }
 
 /* repetitive section */
@@ -61,5 +62,13 @@ display: none;
 opacity: 0;
 gap:0.5vw;
 transition: opacity 2s;
+}
+
+.selected{
+outline:2px solid var(--yellow)
 
 }
+
+
+
+
