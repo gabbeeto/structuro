@@ -1,4 +1,6 @@
-import './style/node/node.css'
+import './style/node/node.css';
+import {changeSelectedNode} from './nodes/selectedNodes.js';
+
 
 let nodeContainer = document.querySelector('#nodes')
 window.nodeSizeForColumnTemplate = [];
@@ -87,6 +89,8 @@ function displayInNodes() {
       let nodeText = document.createElement('p')
       nodeText.innerText = node.text;
       nodeText.style.backgroundColor = node.color;
+      nodeText.value = `${node.indexForStructure}-${node.indexForSibling}`
+      nodeText.addEventListener('click', changeSelectedNode)
       divForNodes.appendChild(nodeText);
     }
   }
