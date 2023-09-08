@@ -1,4 +1,4 @@
-import { currentWindow, closeWindow, displayWindow } from './../currentWindow.js';
+import { currentWindow, closeWindow, displayWindow,displayWindowError } from './../currentWindow.js';
 import {applyFirstNodeFunc} from './../../nodes/firstNode.js';
 
 
@@ -19,6 +19,9 @@ export function generateWindowForFirstNodeButton(){
 
     windowProperties.isWindowNotOpen = false;
     displayWindow();
+  }
+  else{
+  displayWindowError()
   }
 
 }

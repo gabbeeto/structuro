@@ -25,10 +25,22 @@ color: var(--white);
 }
 
 header{
+position:relative;
 border-bottom:2px solid var(--white);
 justify-content:center;
 align-items:center;
 }
+
+/* error container */
+header div{
+position: absolute;
+right:0;
+opacity: 0;
+transition:opacity 2s;
+}
+
+
+
 
 main{
 position:relative;
@@ -68,7 +80,6 @@ transition: opacity 2s;
 outline:2px solid var(--yellow)
 
 }
-
 
 
 

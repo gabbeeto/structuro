@@ -1,9 +1,9 @@
-import { currentWindow, closeWindow, displayWindow } from './../currentWindow.js'
+import { currentWindow, closeWindow, displayWindow, displayWindowError } from './../currentWindow.js'
 import { addNodeToLeft, addNodeToRight, addNodeChild } from './../../nodes/createNodes.js'
 
 
 export function generateWindowForCreateNodesButton() {
-  if (windowProperties.isWindowNotOpen) {
+  if(windowProperties.isWindowNotOpen) {
     currentWindow.innerHTML = `<button id='closeWindow'>close</button>
     <div>
     <button id="addNodeToTheLeft">left</button>
@@ -20,6 +20,7 @@ export function generateWindowForCreateNodesButton() {
     windowProperties.isWindowNotOpen = false;
     displayWindow();
   }
-
-
+  else{
+  displayWindowError()
+  }
 }

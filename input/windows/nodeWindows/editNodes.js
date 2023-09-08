@@ -1,4 +1,4 @@
-import { currentWindow, closeWindow, displayWindow} from './../currentWindow.js'
+import { currentWindow, closeWindow, displayWindow, displayWindowError } from './../currentWindow.js'
 import { applyEditChanges} from './../../nodes/editNodes.js'
 
 export function generateWindowForEditNodesButton() {
@@ -18,6 +18,9 @@ export function generateWindowForEditNodesButton() {
 
     windowProperties.isWindowNotOpen = false;
     displayWindow();
+  }
+  else{
+  displayWindowError()
   }
 }
 

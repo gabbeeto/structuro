@@ -1,4 +1,4 @@
-import { currentWindow, closeWindow, displayWindow } from './../currentWindow.js'
+import { currentWindow, closeWindow, displayWindow,displayWindowError } from './../currentWindow.js'
 import { removeNode } from './../../nodes/removeNodes.js'
 export function generateWindowForRemoveNodesButton() {
 
@@ -11,6 +11,9 @@ export function generateWindowForRemoveNodesButton() {
 
     windowProperties.isWindowNotOpen = false;
     displayWindow()
+  }
+  else{
+  displayWindowError()
   }
 }
 
