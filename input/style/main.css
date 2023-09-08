@@ -33,6 +33,22 @@ main{
 position:relative;
 }
 
+button{
+background-color: var(--black);
+color: var(--white);
+border: 2px solid var(--white);
+transition:all 500ms;
+padding:0.8vw;
+border-radius:10px;
+}
+
+button:hover{
+background-color: var(--white);
+color: var(--black);
+border: 2px solid var(--black);
+ 
+}
+
 #buttons{
   top:2vh;
   width:100%;
