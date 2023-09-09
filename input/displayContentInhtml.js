@@ -89,8 +89,8 @@ function displayInNodes() {
       let nodeText = document.createElement('p')
       nodeText.innerText = node.text;
       nodeText.style.backgroundColor = node.color;
-      nodeText.value = `${node.indexForStructure}-${node.indexForSibling}`
-      nodeText.addEventListener('click', changeSelectedNode)
+      nodeText.value = `${node.indexForStructure}-${node.indexForSibling}`;
+      nodeText.addEventListener('click', changeSelectedNode);
       divForNodes.appendChild(nodeText);
     }
   }

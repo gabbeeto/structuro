@@ -2,7 +2,7 @@
 
 // empty elements are for displaying purposes only
 
-function emptyElement(text = 'empty', indexForParent = true){
+window.emptyElement = function(text = 'empty', indexForParent = true){
 return {text, indexForParent}
 }
 
