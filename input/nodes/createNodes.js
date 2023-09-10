@@ -1,4 +1,4 @@
-
+import { returnChildrenParameter, updateNodeStructure } from './nodeStructure.js'
 let divIndex;
 let nodeIndex;
 
@@ -16,8 +16,8 @@ export function addNodeChild() {
 
 export function addNodeToRight() {
   divideSelectedNode()
-  pushToNodeStructureArray()
-  updateFollowingElements()
+  pushToNodeStructureArrayAndPushToParent()
+  updateNodeStructure()
 }
 
 function divideSelectedNode() {
@@ -29,26 +29,37 @@ function divideSelectedNode() {
 
 }
 
-function pushToNodeStructureArray() {
-  nodeStructure[divIndex].splice(nodeIndex, 0, nodeElement('new Element', 'black', emptyElement(), nodeIndex + 1, nodeStructure[divIndex][nodeIndex].indexForParent, divIndex))
+function pushToNodeStructureArrayAndPushToParent() {
+  let pushedNode = nodeElement('new Element', 'black', emptyElement(), nodeIndex + 1, nodeStructure[divIndex][nodeIndex].indexForParent, divIndex);
+  console.log(pushedNode)
+
+  nodeStructure[divIndex].splice(nodeIndex, 0, pushedNode)
+
+  pushToParent(JSON.stringify(pushedNode))
 }
 
-function updateFollowingElements() {
-  console.log(nodeStructure[divIndex][nodeIndex])
-  let parentElement = nodeStructure[divIndex - 1][nodeStructure[divIndex][nodeIndex].indexForParent];
-  // increase amount of space on the Parent because new element was created
-  parentElement.amountOfSpace = parentElement.amountOfSpace + 1;
-  for (let index in nodeStructure) {
-    for (let node of nodeStructure[index2]) {
-      if (node.indexForSibling > nodeIndex && node.indexForStructure > divIndex) {
-        
-
-      }
-
-    }
-
-
-  }
-
-
+function pushToParent(pushedNode) {
+  let child = returnChildrenParameter(Number(divIndex));
+  // console.log(child)
+ console.log(`${child}.push(${pushedNode})`) 
+  eval(`${child}.push(${pushedNode})`)
 }
+
+// function updateFollowingElements() {
+//   console.log(nodeStructure[divIndex][nodeIndex])
+//   let parentElement = nodeStructure[divIndex - 1][nodeStructure[divIndex][nodeIndex].indexForParent];
+//   // increase amount of space on the Parent because new element was created
+//   parentElement.amountOfSpace = parentElement.amountOfSpace + 1;
+//   for (let index in nodeStructure) {
+//     for (let node of nodeStructure[index]) {
+//       if (node.indexForSibling > nodeIndex && node.indexForStructure == divIndex) {
+//       node.indexForSibling += 1;
+//       }
+
+//     }
+
+
+//   }
+
+
+// }

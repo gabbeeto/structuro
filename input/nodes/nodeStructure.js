@@ -1,4 +1,6 @@
 
+let children = 0;
+let amountOfSpace = 1;
 
 // empty elements are for displaying purposes only
 
@@ -16,7 +18,7 @@ if (localStorage.nodeStructure) {
   window.selectedStructure = JSON.parse(localStorage.nodeStructure.selected)
 }
 else {
-  let firstNode = nodeElement('firstElement', 'black', [nodeElement('secondElement', 'pink'),nodeElement('thirdElement', 'gray')]);
+  window.firstNode = nodeElement('firstElement', 'black', [nodeElement('secondElement', 'pink'),nodeElement('thirdElement', 'gray')]);
   firstNode.amountOfSpace = 2;
   firstNode.children[0].indexForStructure = 1;
   firstNode.children[1].indexForStructure = 1;
@@ -29,6 +31,43 @@ else {
   window.selectedStructure = nodeStructure;
 }
 
+updateNodeStructure(firstNode)
 
+
+// work on this
+export function updateNodeStructure(){
+children = 0;
+amountOfSpace = 1;
+iterateThroughChildren(firstNode)
+}
+
+
+
+function iterateThroughChildren(node){
+if(node.children.color){
+children += 1;
+let child = returnChildrenParameter(children)
+iterateThroughChildren(eval(child))
+}
+else{
+
+children = 0;
+amountOfSpace = amountOfSpace + 1;
+}
+}
+
+
+// checks that the children is not an empty element 
+
+export function returnChildrenParameter(childNumber){
+let array = ['firstNode']
+// console.log(`ddd:${childNumber}`)
+for(let index =0;index < childNumber;index++){
+array.push(`['children']`)
+}
+  // console.log(array)
+return array.join('')
+
+}
 
 
