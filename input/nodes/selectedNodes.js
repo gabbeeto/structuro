@@ -9,7 +9,7 @@ export function changeSelectedNode(event) {
 function displaySelected() {
   let pTags = document.querySelectorAll('#nodes p');
   for (let pTag of pTags) {
-    console.log(pTag);
+    // console.log(pTag);
     pTag.classList.remove('selected')
     if (pTag.value == selectedNode) {
       pTag.classList.add('selected')
