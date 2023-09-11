@@ -45,6 +45,7 @@ export function updateNodeStructure() {
 
 function iterateThroughChildren(node) {
   if (node.children.color) {
+    // make sister variable for looking to the next sibling
     children += 1;
     checkParent()
     let child = returnChildrenParameter(children)
@@ -52,6 +53,8 @@ function iterateThroughChildren(node) {
   }
   else {
 
+    // make it a function and make recursion with that function trying to see if the parent container has a sister or not
+    // if it finds the sister, work with that sister and its children
     children = 0;
     amountOfSpace = amountOfSpace + 1;
   }
