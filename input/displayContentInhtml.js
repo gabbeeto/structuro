@@ -4,6 +4,7 @@ import {changeSelectedNode} from './nodes/selectedNodes.js';
 
 let nodeContainer = document.querySelector('#nodes')
 window.nodeSizeForColumnTemplate = [];
+window.nodeSize = [];
 
 displayElements()
 
@@ -48,7 +49,9 @@ function getWidthSizeForNode(node) {
     let divSpace = amountOfSpaceInNodeDivs[node.indexForStructure];
     let percentageCalculation = (nodeSpace / divSpace)
 
+    console.log(node.indexForStructure -1)
     let parentElementSize = window.nodeSize[node.indexForStructure - 1][node.indexForParent]
+
     let calculation2 = (percentageCalculation * parentElementSize)
 
     // if statement made to combat the undefined problem
