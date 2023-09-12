@@ -49,7 +49,7 @@ function getWidthSizeForNode(node) {
     let divSpace = amountOfSpaceInNodeDivs[node.indexForStructure];
     let percentageCalculation = (nodeSpace / divSpace)
 
-    console.log(node.indexForStructure -1)
+    // console.log(node.indexForStructure -1)
     let parentElementSize = window.nodeSize[node.indexForStructure - 1][node.indexForParent]
 
     let calculation2 = (percentageCalculation * parentElementSize)

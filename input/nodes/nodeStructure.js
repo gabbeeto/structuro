@@ -48,18 +48,17 @@ export function updateNodeStructure() {
 
 
 
+// make sister variable for looking to the next sibling
 function iterateThroughChildren(node) {
-  // console.log(node.children[siblingIndex].color)
-  // console.log('lol')
   if (node.children[siblingIndex].color) {
-    // make sister variable for looking to the next sibling
+    updateArray(node)
+    updateInformationForCurrentNode(node)
+
     children += 1;
-    getIndexForParent(node)
-    newArray.push(node);
-    // let child = returnChildrenVariableDependingOnChildNumber(children)
     let child = appendArgument(`${previousNode}`, `children[${siblingIndex}]`, 1)
     previousNode = child;
     iterateThroughChildren(eval(child))
+
   }
   else {
     // make it a function and make recursion with that function trying to see if the parent container has a sister or not
@@ -69,39 +68,43 @@ function iterateThroughChildren(node) {
   }
 }
 
+function updateArray(node) {
 
-function getIndexForParent(node) {
+  if (newArray[children][siblingIndex]) {
+    newArray[children][siblingIndex] = node;
+    console.log('this workeddddd')
+  }
+  else {
+    console.log('this worked')
+    newArray[children].push(node);
+  }
+
+}
+
+function updateInformationForCurrentNode(node) {
+  updateIndexForParent(node)
+  node.indexForSibling = siblingIndex;
+  node.indexForStructure = children;
+
+}
+
+function updateIndexForParent(node) {
   if (node.indexForStructure != 0) {
     node.indexForParent == false;
   }
   else {
-    node.indexForParent = newArray[children -1].indexForSibling
-    // work on this 
+    node.indexForParent = newArray[children][siblingIndex].indexForSibling
   }
 }
 
 
-// checks that the children is not an empty element 
-
-export function returnChildrenVariableDependingOnChildNumber(childNumber) {
-  let array = ['firstNode']
-  // console.log(`ddd:${childNumber}`)
-  for (let index = 0; index < childNumber; index++) {
-    array.push(`['children']`)
-  }
-  // console.log(array)
-  return array.join('')
-
-}
 
 
-export function appendArgument(variableToAppend,appendedVariable,numberOfTimes) {
+export function appendArgument(variableToAppend, appendedVariable, numberOfTimes) {
   let array = [`${variableToAppend}`]
-  // console.log(`ddd:${childNumber}`)
   for (let index = 0; index < numberOfTimes; index++) {
     array.push(`.${appendedVariable}`)
   }
-  // console.log(array)
   return array.join('')
 
 }

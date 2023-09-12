@@ -41,7 +41,7 @@ function pushToNodeStructureArrayAndPushToParent() {
 function pushToParent(pushedNode) {
   // let child = returnChildrenVariableDependingOnChildNumber(Number(divIndex));
   let child = appendArgument('firstNode','children',Number(divIndex));
-  console.log(divIndex)
+  // console.log(divIndex)
  // console.log(`${child}.push(${pushedNode})`) 
   eval(`${child}.push(${pushedNode})`)
 }
