@@ -41,34 +41,44 @@ export function updateNodeStructure() {
   children = 0;
   amountOfSpace = 1;
   siblingIndex = 0;
-  newArray = [[]];
-  newArray[2] = 'lalalala';
-  // console.log(newArray)
   previousNode = 'firstNode';
-  iterateThroughChildren(firstNode)
-}
-
-
+  newArray = [[firstNode]];
+  // console.log(newArray)
 
 
 // 1 from top to bottom try to reach the empty element
 // 2. check if last element has siblings, if not.. come back to the previous children with siblings
 // 3. repeat top to bottom procress until it reaches to empty element
+  iterateThroughChildren(firstNode)
+  nodeStructure = newArray;
+  console.log(newArray)
+}
+
+
+
+
 
 
 
 function iterateThroughChildren(node) {
+console.log('intialize iterate...')
+console.log('<<')
+console.log(node)
+console.log(node.children)
+console.log(`sibling: ${siblingIndex}`)
+console.log(`children: ${children}`)
+console.log('>>')
+  if (node.children[0].color) {
+    console.log('children detected...')
 
-// console.log(amountOfSpace);
-// console.log(node);
-// from top to bottom try to reach the empty element
-  if (node.children[siblingIndex].color) {
     updateInformationForCurrentNode(node)
     updateArray(node)
+    children = children + 1;
 
-    children += 1;
+
     let child = appendArgument(`${previousNode}`, `children[${siblingIndex}]`, 1)
     previousNode = child;
+
     iterateThroughChildren(eval(child))
 
   }
@@ -81,25 +91,23 @@ function iterateThroughChildren(node) {
 
 
 function updateArray(node) {
-
-  // if (newArray[children][siblingIndex]) {
-  //   newArray[children][siblingIndex] = node;
-  //   // console.log('this workeddddd')
-  // else {
-    // console.log('this worked')
-  // console.log(children)
-    newArray[children].push(node);
-  // }
+console.log('intialize array update...')
+  if(!newArray[children +1]){
+newArray[children +1] = []
+  }
+    newArray[children + 1][siblingIndex] = eval(appendArgument(`${previousNode}`, `children[${siblingIndex}]`, 1));
 
 }
 
-function updateInformationForCurrentNode(node) {
+function updateInformationForCurrentNode() {
+console.log('intialize info update...')
+  let node =  eval(appendArgument(`${previousNode}`, `children[${siblingIndex}]`, 1));
+
   // update index for parent
-  if (node.indexForStructure != 0) {
-    node.indexForParent == false;
-  }
-  else {
-    node.indexForParent = newArray[children][siblingIndex].indexForSibling
+  if (node.indexForParent) {
+    // console.log(children)
+    // console.log(siblingIndex)
+    node.indexForParent = newArray[children +1][siblingIndex].indexForSibling
   }
 
 
@@ -108,7 +116,7 @@ function updateInformationForCurrentNode(node) {
 
 
   // update index for sibling 
-  node.indexForStructure = children;
+  node.indexForStructure = children + 1;
 
 }
 
@@ -117,6 +125,7 @@ function updateInformationForCurrentNode(node) {
 
 
 export function appendArgument(variableToAppend, appendedVariable, numberOfTimes) {
+console.log('intialize append...')
   let array = [`${variableToAppend}`]
   for (let index = 0; index < numberOfTimes; index++) {
     array.push(`.${appendedVariable}`)
@@ -127,6 +136,7 @@ export function appendArgument(variableToAppend, appendedVariable, numberOfTimes
 
 
 function findSibling(node) {
+  console.log('initialize find sibling..')
 // 2. check if last element has siblings, if not.. come back to the previous children with siblings
 
 
@@ -141,10 +151,24 @@ function findSibling(node) {
 
   // console.log(arrayWithoutTheLastChildren)
   if (eval(nodeWithUpdatedSibling)) {
+
+    console.log('***')
+    console.log('if eval(nodeWithUpdatedSibling) ')
+    console.log(arrayWithoutTheLastChildren)
+    console.log(`previousNode: ${previousNode}`)
+    console.log('***')
+    previousNode = arrayWithoutTheLastChildren;
+    
     iterateThroughChildren(eval(arrayWithoutTheLastChildren))
   }
   else{
+    if(amountOfSpace < firstNode.amountOfSpace){
+
   findSibling()
+    }
+    console.log('**')
+    console.log('sibling not found')
+    console.log('**')
   }
  }
 
