@@ -9,6 +9,7 @@ window.nodeSize = [];
 displayElements()
 
 export function displayElements() {
+  nodeContainer.innerHTML = '';
   calculateSpaceInsideStructureArray()
   calculateSizeForDisplay()
   displayInNodes()
