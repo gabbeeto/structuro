@@ -15,7 +15,11 @@ export function addNodeToLeft() {
 
 
 export function addNodeChild() {
-  alert('addNodeToRight')
+  firstNode.amountOfSpace += 1;
+  divIndex = 0;
+  nodeIndex = 1;
+  divideSelectedNode()
+  pushChild()
 }
 
 
@@ -54,3 +58,21 @@ function pushToParent(pushedNode, rightOrientation) {
 
 }
 
+
+// continue tomorrow
+function pushChild() {
+  let pushedNode = nodeElement('new Element', 'black', [emptyElement()], nodeStructure[divIndex][nodeIndex].children.length - 1, nodeStructure[divIndex][nodeIndex].indexForSibling, divIndex);
+  let child = appendArgument('firstNode', 'children.children', Number(divIndex));
+
+
+  let length = `${child}.length`;
+  let color = `${child}.color`;
+
+  if (eval(color)) {
+    console.log(length)
+  }
+  else {
+
+  }
+
+}
