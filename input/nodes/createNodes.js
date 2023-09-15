@@ -1,11 +1,16 @@
-// import { appendArgument } from './nodeStructure.js'
-import {  updateNodeStructure, appendArgument } from './updateStructure.js'
+import { updateNodeStructure, appendArgument } from './updateStructure.js'
 let divIndex;
 let nodeIndex;
 
 
 export function addNodeToLeft() {
-  alert('addNodeToLeft')
+  firstNode.amountOfSpace += 1;
+  divIndex = 0;
+  nodeIndex = 1;
+  divideSelectedNode()
+  pushTofirstNode(false)
+
+  updateNodeStructure()
 }
 
 
@@ -19,7 +24,7 @@ export function addNodeToRight() {
   divIndex = 0;
   nodeIndex = 1;
   divideSelectedNode()
-  pushToNodeStructureArrayAndPushToParent()
+  pushTofirstNode(true)
 
 
   updateNodeStructure()
@@ -32,18 +37,20 @@ function divideSelectedNode() {
 }
 
 
-function pushToNodeStructureArrayAndPushToParent() {
+function pushTofirstNode(orientation) {
   let pushedNode = nodeElement('new Element', 'black', [emptyElement()], nodeIndex + 1, nodeStructure[divIndex][nodeIndex].indexForParent, divIndex);
-
-  nodeStructure[divIndex].splice(nodeIndex + 1, 0, pushedNode)
-
-  pushToParent(JSON.stringify(pushedNode))
+  pushToParent(JSON.stringify(pushedNode), orientation)
 }
 
 
-function pushToParent(pushedNode) {
-  let child = appendArgument('firstNode','children',Number(divIndex));
+function pushToParent(pushedNode, rightOrientation) {
+  let child = appendArgument('firstNode', 'children', Number(divIndex));
+  if (rightOrientation) {
+    eval(`${child}.splice(${nodeIndex} + 1, 0,${pushedNode})`)
+  }
+  else {
+    eval(`${child}.splice(${nodeIndex} , 0,${pushedNode})`)
+  }
 
- eval(`${child}.splice(${nodeIndex} + 1, 0,${pushedNode})`) 
 }
 
