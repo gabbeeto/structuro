@@ -22,6 +22,8 @@ export function addNodeChild() {
   nodeIndex = 1;
   divideSelectedNode()
   pushChild()
+console.log(firstNode)
+  updateNodeStructure()
 }
 
 
@@ -67,19 +69,14 @@ function pushChild() {
   // let child = appendArgument('firstNode', 'children', Number(divIndex));
   let child = appendElementText()
 
-  let length = `${child}.length`;
-  let color = `${child}.color`;
+  let colorOfTheChildren = `${child}.children[0].color`;
 
-
-  console.log(length);
-  // console.log(color);
-
-  // if(color) {
-  // console.log(length)
-  // }
-  // else{
-  // console.log(length)
-  // }
+  if(eval(colorOfTheChildren)) {
+    eval(`${child}.children.push(${JSON.stringify(pushedNode)})`)
+  }
+  else{
+    eval(`${child}.children[0] = ${JSON.stringify(pushedNode)}`)
+  }
 
 }
 
@@ -92,7 +89,7 @@ function appendElementText() {
   for (let index = divIndex; index > -1; index--) {
     if (index == divIndex) {
       let pushedElement = `.children[${nodeStructure[index][nodeIndex].indexForSibling}]`;
-      console.log(pushedElement)
+      // console.log(pushedElement)
       elementTextArray.unshift(pushedElement)
     }
     else if (index == 0) {
@@ -102,7 +99,7 @@ function appendElementText() {
       let previousElementNodeIndex = elementTextArray[0].substring(elementTextArray[0].indexOf('['), elementTextArray[0].length);
       let parentIndex = Number(nodeStructure[index + 1][Number(previousElementNodeIndex)].indexForParent);
       let pushedElement = `.children[${nodeStructure[index][parentIndex]}]`
-      console.log(pushedElement)
+      // console.log(pushedElement)
       elementTextArray.unshift(pushedElement)
     }
   }

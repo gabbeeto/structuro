@@ -110,7 +110,7 @@ export function appendArgument(variableToAppend, appendedVariable, numberOfTimes
 function findSibling(node) {
   // 2. check if last element has siblings, if not.. come back to the previous children with siblings
 
-
+console.log(previousNode)
   let nodeWithoutPreviousSibling = previousNode.substring(0, previousNode.length - 3);
 
   let nodeWithUpdatedSibling = `${nodeWithoutPreviousSibling}[${siblingIndex}]`;
@@ -128,7 +128,9 @@ function findSibling(node) {
   }
   else {
     if (amountOfSpace < firstNode.amountOfSpace) {
-
+      let previousSplitted = previousNode.split('.');
+      previousSplitted.pop()
+      previousNode = previousSplitted.join('.')
       findSibling()
 
     }
