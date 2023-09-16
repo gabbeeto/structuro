@@ -1,4 +1,6 @@
 import { updateNodeStructure, appendArgument } from './updateStructure.js'
+
+
 let divIndex;
 let nodeIndex;
 
@@ -62,17 +64,49 @@ function pushToParent(pushedNode, rightOrientation) {
 // continue tomorrow
 function pushChild() {
   let pushedNode = nodeElement('new Element', 'black', [emptyElement()], nodeStructure[divIndex][nodeIndex].children.length - 1, nodeStructure[divIndex][nodeIndex].indexForSibling, divIndex);
-  let child = appendArgument('firstNode', 'children.children', Number(divIndex));
-
+  // let child = appendArgument('firstNode', 'children', Number(divIndex));
+  let child = appendElementText()
 
   let length = `${child}.length`;
   let color = `${child}.color`;
 
-  if (eval(color)) {
-    console.log(length)
-  }
-  else {
 
+  console.log(length);
+  // console.log(color);
+
+  // if(color) {
+  // console.log(length)
+  // }
+  // else{
+  // console.log(length)
+  // }
+
+}
+
+
+function appendElementText() {
+  let elementTextArray = [];
+
+  console.log(`nodeindex:${nodeIndex}`)
+  console.log(`divIndex:${divIndex}`)
+  for (let index = divIndex; index > -1; index--) {
+    if (index == divIndex) {
+      let pushedElement = `.children[${nodeStructure[index][nodeIndex].indexForSibling}]`;
+      console.log(pushedElement)
+      elementTextArray.unshift(pushedElement)
+    }
+    else if (index == 0) {
+      elementTextArray.unshift('firstNode');
+    }
+    else {
+      let previousElementNodeIndex = elementTextArray[0].substring(elementTextArray[0].indexOf('['), elementTextArray[0].length);
+      let parentIndex = Number(nodeStructure[index + 1][Number(previousElementNodeIndex)].indexForParent);
+      let pushedElement = `.children[${nodeStructure[index][parentIndex]}]`
+      console.log(pushedElement)
+      elementTextArray.unshift(pushedElement)
+    }
   }
+
+  return elementTextArray.join('');
 
 }
